@@ -48,6 +48,7 @@ namespace Notes
             {
                 int width = int.Parse(sirka.Text);
                 int height = int.Parse(vyska.Text);
+                bool hide = true;
                 string[] barvy = barva.Text.Split(';');
                 Color color = Color.FromArgb(int.Parse(barvy[0]), int.Parse(barvy[1]), int.Parse(barvy[2]));
                 if (pocetPripominek > 2)
@@ -57,7 +58,7 @@ namespace Notes
                 else if (druh.Text == "Poznamka")
                     using(StreamWriter sw = new StreamWriter(APPpoznamky, true))
                     {
-                        sw.WriteLine(poziceX.ToString() + ";" + poziceY.ToString() + ";" + width.ToString() + ";" + height.ToString() + ";" + barvy[0] + "," + barvy[1] + "," + barvy[2]);
+                        sw.WriteLine(hide.ToString() + ";" + poziceX.ToString() + ";" + poziceY.ToString() + ";" + width.ToString() + ";" + height.ToString() + ";" + barvy[0] + "," + barvy[1] + "," + barvy[2]);
                         sw.Flush();
                         pocetPripominek++;
                     }
