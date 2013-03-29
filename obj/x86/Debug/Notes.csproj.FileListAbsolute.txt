@@ -1,0 +1,11 @@
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\bin\Debug\Notes.exe
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\bin\Debug\Notes.pdb
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\Notes.Form1.resources
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\Notes.Properties.Resources.resources
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\Notes.exe
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\Notes.pdb
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\Notes.EditForm.resources
+C:\Users\Ghol3\Desktop\C#\Notes\Notes\obj\x86\Debug\Notes.ColorForm.resources
