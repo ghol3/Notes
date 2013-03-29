@@ -121,9 +121,28 @@ namespace Notes
          */
         private void zmena()
         {
-            string[] prvnipoznamka = poznamkyhodnoty[0].Split(';');
-            poznamka0.Visible = bool.Parse(prvnipoznamka[0]);
-
+            string[, ] poznamky = new string[3, 6];
+            string[] rozdelene;
+            for (int i = 0; i < 3; i++)
+            {
+                try { rozdelene = poznamkyhodnoty[i].Split(';'); }
+                catch{ rozdelene = poznamkyhodnoty[i].Split(' '); }
+                for (int j = 0; j < 6; j++)
+                    poznamky[i, j] = rozdelene[j];
+            }
+            TextBox[] textboxy = new TextBox[3];
+            textboxy[0] = poznamka0;
+            textboxy[1] = poznamka1;
+            textboxy[2] = poznamka2;
+            for (int i = 0; i < 3; i++)
+            {
+                textboxy[i].Visible = bool.Parse(poznamky[i, 0]);
+                textboxy[i].Location = new Point(int.Parse(poznamky[i, 1]), int.Parse(poznamky[i, 2]));
+                textboxy[i].Width = int.Parse(poznamky[i, 3]);
+                textboxy[i].Height = int.Parse(poznamky[i, 4]);
+                string[] color = poznamky[i, 5].Split(',');
+                textboxy[i].BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
+            }
         }
         //------------------------------------------------------------------
         
