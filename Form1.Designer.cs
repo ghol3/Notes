@@ -28,38 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Lista = new System.Windows.Forms.PictureBox();
             this.Neviditelne = new System.Windows.Forms.PictureBox();
             this.poznamka0 = new System.Windows.Forms.TextBox();
             this.poznamka1 = new System.Windows.Forms.TextBox();
             this.poznamka2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::Notes.Properties.Resources.notes_edit;
-            this.pictureBox3.Location = new System.Drawing.Point(414, 84);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(27, 22);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::Notes.Properties.Resources.notes_minus;
-            this.pictureBox2.Location = new System.Drawing.Point(414, 59);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(27, 22);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -94,7 +72,7 @@
             // 
             // poznamka0
             // 
-            this.poznamka0.Location = new System.Drawing.Point(12, 227);
+            this.poznamka0.Location = new System.Drawing.Point(12, 34);
             this.poznamka0.Multiline = true;
             this.poznamka0.Name = "poznamka0";
             this.poznamka0.Size = new System.Drawing.Size(44, 40);
@@ -105,7 +83,7 @@
             // 
             // poznamka1
             // 
-            this.poznamka1.Location = new System.Drawing.Point(62, 227);
+            this.poznamka1.Location = new System.Drawing.Point(62, 34);
             this.poznamka1.Multiline = true;
             this.poznamka1.Name = "poznamka1";
             this.poznamka1.Size = new System.Drawing.Size(44, 40);
@@ -113,7 +91,7 @@
             // 
             // poznamka2
             // 
-            this.poznamka2.Location = new System.Drawing.Point(112, 227);
+            this.poznamka2.Location = new System.Drawing.Point(112, 34);
             this.poznamka2.Multiline = true;
             this.poznamka2.Name = "poznamka2";
             this.poznamka2.Size = new System.Drawing.Size(44, 40);
@@ -123,12 +101,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(441, 279);
             this.Controls.Add(this.poznamka2);
             this.Controls.Add(this.poznamka1);
             this.Controls.Add(this.poznamka0);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Lista);
             this.Controls.Add(this.Neviditelne);
@@ -137,8 +114,7 @@
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Move += new System.EventHandler(this.Form1_Move);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).EndInit();
@@ -152,8 +128,6 @@
         private System.Windows.Forms.PictureBox Neviditelne;
         private System.Windows.Forms.PictureBox Lista;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox poznamka0;
         private System.Windows.Forms.TextBox poznamka1;
         private System.Windows.Forms.TextBox poznamka2;

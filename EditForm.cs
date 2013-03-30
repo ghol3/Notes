@@ -13,68 +13,108 @@ namespace Notes
     {
         private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
         private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
-        private int pocetPripominek = 0;
-        private int pocetObrazku = 0;
-        private int poziceX = 30, poziceY = 30;
+        ColorForm colorform = new ColorForm();
 
-        public EditForm()
+        public EditForm(int[] souradnice)
         {
             InitializeComponent();
-            try
+            string[] udaje = new string[3];
+            int i = 0;
+            string s = "";
+            using (StreamReader sr = new StreamReader(APPpoznamky))
             {
-                using (StreamReader sr = new StreamReader(APPpoznamky))
+                while ((s = sr.ReadLine()) != null)
                 {
-                    string s = "";
-                    while ((s = sr.ReadLine()) != null)
-                    {
-                        pocetPripominek++;
-                    }
+                    udaje[i] = s;
+                    i++;
                 }
             }
-            catch
-            {
-                using (StreamWriter sw = new StreamWriter(APPpoznamky))
-                {
-                    sw.Write("");
-                    sw.Flush();
-                    pocetPripominek++;
-                }
-            }
+            //prvni poznamka
+            string[] data = udaje[0].Split(';');
+            sirka1.Text = data[3];
+            vyska1.Text = data[4];
+            barva1.Text = data[5];
+            if (bool.Parse(data[0]) == true)
+                checkBox1.Checked = true;
+            else
+                checkBox1.Checked = false;
+            //druha ponamka
+            string[] data1 = udaje[1].Split(';');
+            sirka2.Text = data1[3];
+            vyska2.Text = data1[4];
+            barva2.Text = data1[5];
+            if (bool.Parse(data1[0]) == true)
+                checkBox2.Checked = true;
+            else
+                checkBox2.Checked = false;
+            //treti poznamka
+            string[] data2 = udaje[2].Split(';');
+            sirka3.Text = data2[3];
+            vyska3.Text = data2[4];
+            barva3.Text = data2[5];
+            if (bool.Parse(data2[0]) == true)
+                checkBox3.Checked = true;
+            else
+                checkBox3.Checked = false;
+            //sirka1.Text = souradnice[0].ToString();
+            //vyska1.Text = souradnice[1].ToString();
+            
+        }
+        //PRVNI STRANKA ---------------------------------------------
+        private void colorButton1_Click(object sender, EventArgs e)
+        {
+            colorform.ShowDialog();
+            barva1.Text = colorform.colorfromform;
         }
 
+        private void colorButton2_Click(object sender, EventArgs e)
+        {
+            colorform.ShowDialog();
+            barva2.Text = colorform.colorfromform;
+        }
+
+        private void colorButton3_Click(object sender, EventArgs e)
+        {
+            colorform.ShowDialog();
+            barva3.Text = colorform.colorfromform;
+        }
+        //---------------------------------------------------------------
+        //DRUHA STRANKA--------------------------------------------------
+        private void colorbutton1obrazek_Click(object sender, EventArgs e)
+        {
+            colorform.ShowDialog();
+            obrazekbarva1.Text = colorform.colorfromform;
+        }
+
+        private void colorbutton2obrazek_Click(object sender, EventArgs e)
+        {
+            colorform.ShowDialog();
+            obrazekbarva2.Text = colorform.colorfromform;
+        }
+
+        private void colorbutton3obrazek_Click(object sender, EventArgs e)
+        {
+            colorform.ShowDialog();
+            obrazekbarva3.Text = colorform.colorfromform;
+        }
+        //--------------------------------------------------------------
+
+        //SAVE----------------------------------------------------------
         private void Save_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int width = int.Parse(sirka.Text);
-                int height = int.Parse(vyska.Text);
-                bool hide = true;
-                string[] barvy = barva.Text.Split(';');
-                Color color = Color.FromArgb(int.Parse(barvy[0]), int.Parse(barvy[1]), int.Parse(barvy[2]));
-                if (pocetPripominek > 2)
-                    MessageBox.Show("mate maximum poznamek");
-                else if (pocetObrazku > 3)
-                    MessageBox.Show("mate maximum obrazku");
-                else if (druh.Text == "Poznamka")
-                    using(StreamWriter sw = new StreamWriter(APPpoznamky, true))
-                    {
-                        sw.WriteLine(hide.ToString() + ";" + poziceX.ToString() + ";" + poziceY.ToString() + ";" + width.ToString() + ";" + height.ToString() + ";" + barvy[0] + "," + barvy[1] + "," + barvy[2]);
-                        sw.Flush();
-                        pocetPripominek++;
-                    }
-                this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("chlebaci");
-            }
+
         }
 
-        private void ColorButton_Click(object sender, EventArgs e)
+        private void SaveOb_Click(object sender, EventArgs e)
         {
-            ColorForm colorform = new ColorForm();
-            colorform.ShowDialog();
-            barva.Text = colorform.colorfromform;
+
         }
+
+        public void save()
+        {
+            
+            
+        }
+        //---------------------------------------------------------------
     }
 }

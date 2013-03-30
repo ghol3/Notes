@@ -13,10 +13,11 @@ namespace Notes
     {
         private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
         private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
-        private bool poznamkahide0 = false;
-        private bool poznamkahide1 = false;
-        private bool poznamkahide2 = false;
         private string[] poznamkyhodnoty = new string[3];
+        private int[] souradnicePoznamek = new int[6];
+        private int[] souradniceObrazku = new int[6];
+        private int a = 50;
+        private int b = 50;
 
         public Form1()
         {
@@ -35,10 +36,6 @@ namespace Notes
                     {
                         poznamkyhodnoty[j] = s;
                         j++;
-                    }
-                    for (int i = 0; i < 3; i++)
-                    {
-                        MessageBox.Show(poznamkyhodnoty[i]);
                     }
                 }
             }
@@ -93,24 +90,32 @@ namespace Notes
         //EDIT kliknuti -------------------------------------------------
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            EditForm edit = new EditForm();
+            EditForm edit = new EditForm(souradnicePoznamek);
             edit.ShowDialog();
         }
 
         //POHYB S POZNAMKOU 0 ---------------------------------------------
+        bool pohyb = false;
         private void poznamka0_MouseDown(object sender, MouseEventArgs e)
         {
-
+            pohyb = true;
         }
 
         private void poznamka0_MouseMove(object sender, MouseEventArgs e)
         {
-
+            this.Location = new Point(a, b);
+            if (pohyb)
+                poznamka0.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
         }
-
+        
         private void poznamka0_MouseUp(object sender, MouseEventArgs e)
         {
-
+            pohyb = false;
+            souradnicePoznamek[0] = poznamka0.Location.X;
+            souradnicePoznamek[1] = poznamka0.Location.Y;
+            MessageBox.Show(souradnicePoznamek[0].ToString());
+            MessageBox.Show(souradnicePoznamek[1].ToString());
+            
         }
         //------------------------------------------------------------------
 
@@ -126,7 +131,7 @@ namespace Notes
             for (int i = 0; i < 3; i++)
             {
                 try { rozdelene = poznamkyhodnoty[i].Split(';'); }
-                catch{ rozdelene = poznamkyhodnoty[i].Split(' '); }
+                catch { rozdelene = poznamkyhodnoty[i].Split(' '); }
                 for (int j = 0; j < 6; j++)
                     poznamky[i, j] = rozdelene[j];
             }
@@ -143,6 +148,12 @@ namespace Notes
                 string[] color = poznamky[i, 5].Split(',');
                 textboxy[i].BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
             }
+        }
+
+        private void Form1_Move(object sender, EventArgs e)
+        {
+            a = this.Location.X;
+            b = this.Location.Y;
         }
         //------------------------------------------------------------------
         

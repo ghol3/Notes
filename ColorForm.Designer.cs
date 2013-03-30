@@ -58,7 +58,7 @@
             this.green.Name = "green";
             this.green.Size = new System.Drawing.Size(195, 45);
             this.green.TabIndex = 1;
-            this.green.Scroll += new System.EventHandler(this.green_Scroll);
+            this.green.Scroll += new System.EventHandler(this.red_Scroll);
             // 
             // blue
             // 
@@ -67,7 +67,7 @@
             this.blue.Name = "blue";
             this.blue.Size = new System.Drawing.Size(195, 45);
             this.blue.TabIndex = 2;
-            this.blue.Scroll += new System.EventHandler(this.blue_Scroll);
+            this.blue.Scroll += new System.EventHandler(this.red_Scroll);
             // 
             // Barva
             // 

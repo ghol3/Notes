@@ -17,25 +17,15 @@ namespace Notes
             InitializeComponent();
         }
 
+        private void OK_Click(object sender, EventArgs e)
+        {
+            colorfromform = red.Value.ToString() + "," + green.Value.ToString() + "," + blue.Value.ToString();
+            this.Close();
+        }
+
         private void red_Scroll(object sender, EventArgs e)
         {
             Barva.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
-        }
-
-        private void green_Scroll(object sender, EventArgs e)
-        {
-            Barva.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
-        }
-
-        private void blue_Scroll(object sender, EventArgs e)
-        {
-            Barva.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
-        }
-
-        private void OK_Click(object sender, EventArgs e)
-        {
-            colorfromform = red.Value.ToString() + ";" + green.Value.ToString() + ";" + blue.Value.ToString();
-            this.Close();
         }
     }
 }
