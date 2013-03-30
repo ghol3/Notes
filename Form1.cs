@@ -14,7 +14,7 @@ namespace Notes
         private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
         private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
         private string[] poznamkyhodnoty = new string[3];
-        private int[] souradnicePoznamek = new int[6];
+        public int[] souradnicePoznamek = new int[6];
         private int[] souradniceObrazku = new int[6];
         private int a = 50;
         private int b = 50;
@@ -116,6 +116,54 @@ namespace Notes
             MessageBox.Show(souradnicePoznamek[0].ToString());
             MessageBox.Show(souradnicePoznamek[1].ToString());
             
+        }
+        //------------------------------------------------------------------
+
+        //DRUHA POZNAMKA --------------------------------------------------
+        bool pohyb1 = false;
+        private void poznamka1_MouseDown(object sender, MouseEventArgs e)
+        {
+            pohyb1 = true;
+        }
+
+        private void poznamka1_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Location = new Point(a, b);
+            if (pohyb1)
+                poznamka1.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
+        }
+
+        private void poznamka1_MouseUp(object sender, MouseEventArgs e)
+        {
+            pohyb1 = false;
+            souradnicePoznamek[2] = poznamka1.Location.X;
+            souradnicePoznamek[3] = poznamka1.Location.Y;
+            MessageBox.Show(souradnicePoznamek[2].ToString());
+            MessageBox.Show(souradnicePoznamek[3].ToString());
+        }
+        //-------------------------------------------------------------------
+
+        //TRETI POZNAMKA
+        bool pohyb2 = false;
+        private void poznamka2_MouseDown(object sender, MouseEventArgs e)
+        {
+            pohyb2 = true;
+        }
+
+        private void poznamka2_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Location = new Point(a, b);
+            if (pohyb2)
+                poznamka2.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
+        }
+
+        private void poznamka2_MouseUp(object sender, MouseEventArgs e)
+        {
+            pohyb2 = false;
+            souradnicePoznamek[4] = poznamka2.Location.X;
+            souradnicePoznamek[5] = poznamka2.Location.Y;
+            MessageBox.Show(souradnicePoznamek[4].ToString());
+            MessageBox.Show(souradnicePoznamek[5].ToString());
         }
         //------------------------------------------------------------------
 

@@ -13,7 +13,6 @@ namespace Notes
     {
         private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
         private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
-        ColorForm colorform = new ColorForm();
 
         public EditForm(int[] souradnice)
         {
@@ -63,18 +62,21 @@ namespace Notes
         //PRVNI STRANKA ---------------------------------------------
         private void colorButton1_Click(object sender, EventArgs e)
         {
+            ColorForm colorform = new ColorForm(barva1.Text);
             colorform.ShowDialog();
             barva1.Text = colorform.colorfromform;
         }
 
         private void colorButton2_Click(object sender, EventArgs e)
         {
+            ColorForm colorform = new ColorForm(barva2.Text);
             colorform.ShowDialog();
             barva2.Text = colorform.colorfromform;
         }
 
         private void colorButton3_Click(object sender, EventArgs e)
         {
+            ColorForm colorform = new ColorForm(barva3.Text);
             colorform.ShowDialog();
             barva3.Text = colorform.colorfromform;
         }
@@ -82,18 +84,21 @@ namespace Notes
         //DRUHA STRANKA--------------------------------------------------
         private void colorbutton1obrazek_Click(object sender, EventArgs e)
         {
+            ColorForm colorform = new ColorForm(obrazekbarva1.Text);
             colorform.ShowDialog();
             obrazekbarva1.Text = colorform.colorfromform;
         }
 
         private void colorbutton2obrazek_Click(object sender, EventArgs e)
         {
+            ColorForm colorform = new ColorForm(obrazekbarva2.Text);
             colorform.ShowDialog();
             obrazekbarva2.Text = colorform.colorfromform;
         }
 
         private void colorbutton3obrazek_Click(object sender, EventArgs e)
         {
+            ColorForm colorform = new ColorForm(obrazekbarva3.Text);
             colorform.ShowDialog();
             obrazekbarva3.Text = colorform.colorfromform;
         }
@@ -102,7 +107,7 @@ namespace Notes
         //SAVE----------------------------------------------------------
         private void Save_Click(object sender, EventArgs e)
         {
-
+            save();
         }
 
         private void SaveOb_Click(object sender, EventArgs e)
@@ -110,9 +115,21 @@ namespace Notes
 
         }
 
+        /*METODA NA ULOZENI VLASTNOSTI OBJEKTU -------------------------------
+         * True;    30;          30;      45;   45;  45,  45, 54
+         * bool;souradniceX;souradniceY;sirka;vyska;red,green,blue
+         * 
+         */
         public void save()
         {
-            
+            Form1 f = new Form1();
+            using (StreamWriter sw = new StreamWriter(APPpoznamky))
+            {
+                sw.WriteLine(checkBox1.Checked.ToString() + ";" + f.souradnicePoznamek[0].ToString() + ";" + f.souradnicePoznamek[1].ToString() + ";" + sirka1.Text + ";" + vyska1.Text + ";" + barva1.Text);
+                sw.WriteLine(checkBox2.Checked.ToString() + ";" + f.souradnicePoznamek[2].ToString() + ";" + f.souradnicePoznamek[3].ToString() + ";" + sirka2.Text + ";" + vyska2.Text + ";" + barva2.Text);
+                sw.WriteLine(checkBox3.Checked.ToString() + ";" + f.souradnicePoznamek[4].ToString() + ";" + f.souradnicePoznamek[5].ToString() + ";" + sirka3.Text + ";" + vyska3.Text + ";" + barva3.Text);
+                sw.Flush();
+            }
             
         }
         //---------------------------------------------------------------

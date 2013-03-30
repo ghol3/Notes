@@ -88,6 +88,9 @@
             this.poznamka1.Name = "poznamka1";
             this.poznamka1.Size = new System.Drawing.Size(44, 40);
             this.poznamka1.TabIndex = 6;
+            this.poznamka1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.poznamka1_MouseDown);
+            this.poznamka1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.poznamka1_MouseMove);
+            this.poznamka1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.poznamka1_MouseUp);
             // 
             // poznamka2
             // 
@@ -96,6 +99,9 @@
             this.poznamka2.Name = "poznamka2";
             this.poznamka2.Size = new System.Drawing.Size(44, 40);
             this.poznamka2.TabIndex = 7;
+            this.poznamka2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseDown);
+            this.poznamka2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseMove);
+            this.poznamka2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseUp);
             // 
             // Form1
             // 

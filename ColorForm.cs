@@ -12,9 +12,14 @@ namespace Notes
     {
         public string colorfromform;
 
-        public ColorForm()
+        public ColorForm(string barva)
         {
             InitializeComponent();
+            string[] color = barva.Split(',');
+            red.Value = int.Parse(color[0]);
+            green.Value = int.Parse(color[1]);
+            blue.Value = int.Parse(color[2]);
+            Barva.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
         }
 
         private void OK_Click(object sender, EventArgs e)
