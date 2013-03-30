@@ -14,7 +14,7 @@ namespace Notes
         private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
         private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
         private string[] poznamkyhodnoty = new string[3];
-        public int[] souradnicePoznamek = new int[6];
+        private int[] souradnicePoznamek = new int[6];
         private int[] souradniceObrazku = new int[6];
         private int a = 50;
         private int b = 50;
@@ -47,7 +47,15 @@ namespace Notes
                     sw.Flush();
                 }
             }
-            zmena();
+            string[, ] p = new string[3, 6];
+            string[] r;
+            for (int i = 0; i < 3; i++)
+            {
+                r = poznamkyhodnoty[i].Split(';');
+                for (int j = 0; j < 6; j++)
+                    p[i, j] = r[j];
+            }
+            souradnicePoznamek[0] = int.Parse(p[0, 1]); 
         }
 
         //HRANY VYKRESLENI ---------------------------------------------
@@ -178,8 +186,7 @@ namespace Notes
             string[] rozdelene;
             for (int i = 0; i < 3; i++)
             {
-                try { rozdelene = poznamkyhodnoty[i].Split(';'); }
-                catch { rozdelene = poznamkyhodnoty[i].Split(' '); }
+                rozdelene = poznamkyhodnoty[i].Split(';');
                 for (int j = 0; j < 6; j++)
                     poznamky[i, j] = rozdelene[j];
             }

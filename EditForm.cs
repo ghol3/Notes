@@ -13,19 +13,24 @@ namespace Notes
     {
         private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
         private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
+        private int[] pole = new int[6];
 
         public EditForm(int[] souradnice)
         {
             InitializeComponent();
+            for (int i = 0; i < 6; i++)
+            {
+                pole[i] = souradnice[i];
+            }
             string[] udaje = new string[3];
-            int i = 0;
+            int o = 0;
             string s = "";
             using (StreamReader sr = new StreamReader(APPpoznamky))
             {
                 while ((s = sr.ReadLine()) != null)
                 {
-                    udaje[i] = s;
-                    i++;
+                    udaje[o] = s;
+                    o++;
                 }
             }
             //prvni poznamka
@@ -112,7 +117,7 @@ namespace Notes
 
         private void SaveOb_Click(object sender, EventArgs e)
         {
-
+            save();
         }
 
         /*METODA NA ULOZENI VLASTNOSTI OBJEKTU -------------------------------
@@ -125,9 +130,9 @@ namespace Notes
             Form1 f = new Form1();
             using (StreamWriter sw = new StreamWriter(APPpoznamky))
             {
-                sw.WriteLine(checkBox1.Checked.ToString() + ";" + f.souradnicePoznamek[0].ToString() + ";" + f.souradnicePoznamek[1].ToString() + ";" + sirka1.Text + ";" + vyska1.Text + ";" + barva1.Text);
-                sw.WriteLine(checkBox2.Checked.ToString() + ";" + f.souradnicePoznamek[2].ToString() + ";" + f.souradnicePoznamek[3].ToString() + ";" + sirka2.Text + ";" + vyska2.Text + ";" + barva2.Text);
-                sw.WriteLine(checkBox3.Checked.ToString() + ";" + f.souradnicePoznamek[4].ToString() + ";" + f.souradnicePoznamek[5].ToString() + ";" + sirka3.Text + ";" + vyska3.Text + ";" + barva3.Text);
+                sw.WriteLine(checkBox1.Checked.ToString() + ";" + pole[0].ToString() + ";" + pole[1].ToString() + ";" + sirka1.Text + ";" + vyska1.Text + ";" + barva1.Text);
+                sw.WriteLine(checkBox2.Checked.ToString() + ";" + pole[2].ToString() + ";" + pole[3].ToString() + ";" + sirka2.Text + ";" + vyska2.Text + ";" + barva2.Text);
+                sw.WriteLine(checkBox3.Checked.ToString() + ";" + pole[4].ToString() + ";" + pole[5].ToString() + ";" + sirka3.Text + ";" + vyska3.Text + ";" + barva3.Text);
                 sw.Flush();
             }
             
