@@ -14,10 +14,10 @@ namespace Notes
         SaveToFolder savetofolder = new SaveToFolder();
         SaveData save = new SaveData();
         LoadData load = new LoadData();
-        private int[] NotesCoordinate = new int[6];
-        private int[] ImagesCoordinate = new int[6];
-        private int a = 50;
-        private int b = 50;
+        private int
+            a = 50,
+            b = 50;
+
 
         public Form1()
         {
@@ -26,13 +26,8 @@ namespace Notes
             catch { savetofolder.DefaulthSave(load.getAppNotes()); }
             try { string[] Images3 = load.get3Images(); }
             catch { savetofolder.DefaulthSave(load.getAppImages()); }
-            //naplneni souradnic pri startu
-            bool coor = true;
-            NotesCoordinate = load.getCoordinate(coor);
-            coor = false;
-            ImagesCoordinate = load.getCoordinate(coor);
-            zmena();
-            zmenaobrazku();
+            ChangeNotes();
+            ChangeImages();
         }
 
         //HRANY VYKRESLENI ---------------------------------------------
@@ -98,10 +93,6 @@ namespace Notes
             Nmove = false;
             int type = 0;
             save.NCoordinates(type, poznamka0.Location.X, poznamka0.Location.Y);
-            //testovani pak smazat!
-            MessageBox.Show(NotesCoordinate[0].ToString());
-            MessageBox.Show(NotesCoordinate[1].ToString());
-            
         }
         //------------------------------------------------------------------
 
@@ -124,9 +115,6 @@ namespace Notes
             Nmove1 = false;
             int type = 2;
             save.NCoordinates(type, poznamka1.Location.X, poznamka1.Location.Y);
-            //Testovani pak smazat!
-            MessageBox.Show(NotesCoordinate[2].ToString());
-            MessageBox.Show(NotesCoordinate[3].ToString());
         }
         //-------------------------------------------------------------------
 
@@ -149,9 +137,6 @@ namespace Notes
             Nmove2 = false;
             int type = 4;
             save.NCoordinates(type, poznamka2.Location.X, poznamka2.Location.Y);
-            //testovani pak smazat
-            MessageBox.Show(NotesCoordinate[4].ToString());
-            MessageBox.Show(NotesCoordinate[5].ToString());
         }
         //------------------------------------------------------------------
 
@@ -174,9 +159,6 @@ namespace Notes
             Imove = false;
             int type = 0;
             save.ICoordinates(type, obrazek0.Location.X, obrazek0.Location.Y);
-            //testovani pak smazat!
-            MessageBox.Show(ImagesCoordinate[0].ToString());
-            MessageBox.Show(ImagesCoordinate[1].ToString());
         }
 
         bool Imove1 = false;
@@ -197,9 +179,6 @@ namespace Notes
             Imove1 = false;
             int type = 2;
             save.ICoordinates(type, obrazek1.Location.X, obrazek1.Location.Y);
-            //testovani pak smazat
-            MessageBox.Show(ImagesCoordinate[2].ToString());
-            MessageBox.Show(ImagesCoordinate[3].ToString());
         }
 
         bool Imove2 = false;
@@ -220,9 +199,6 @@ namespace Notes
             Imove2 = false;
             int type = 4;
             save.ICoordinates(type, obrazek2.Location.X, obrazek2.Location.Y);
-            //testovani pak smazat
-            MessageBox.Show(ImagesCoordinate[4].ToString());
-            MessageBox.Show(ImagesCoordinate[5].ToString());
         }
         //------------------------------------------------------------------
 
@@ -231,52 +207,39 @@ namespace Notes
          * bool;souradniceX;souradniceY;sirka;vyska;red,green,blue
          * 
          */
-        private void zmena()
+        private void ChangeNotes()
         {
-            string[, ] poznamky = new string[3, 6];
-            string[] rozdelene;
-            for (int i = 0; i < 3; i++)
-            {
-                rozdelene = poznamkyhodnoty[i].Split(';');
-                for (int j = 0; j < 6; j++)
-                    poznamky[i, j] = rozdelene[j];
-            }
+            string[, ] Data = load.getAllDatas(true);
             TextBox[] textboxy = new TextBox[3];
             textboxy[0] = poznamka0;
             textboxy[1] = poznamka1;
             textboxy[2] = poznamka2;
             for (int i = 0; i < 3; i++)
             {
-                textboxy[i].Visible = bool.Parse(poznamky[i, 0]);
-                textboxy[i].Location = new Point(int.Parse(poznamky[i, 1]), int.Parse(poznamky[i, 2]));
-                textboxy[i].Width = int.Parse(poznamky[i, 3]);
-                textboxy[i].Height = int.Parse(poznamky[i, 4]);
-                string[] color = poznamky[i, 5].Split(',');
+                textboxy[i].Visible = bool.Parse(Data[i, 0]);
+                textboxy[i].Location = new Point(int.Parse(Data[i, 1]), int.Parse(Data[i, 2]));
+                textboxy[i].Width = int.Parse(Data[i, 3]);
+                textboxy[i].Height = int.Parse(Data[i, 4]);
+                string[] color = Data[i, 5].Split(',');
                 textboxy[i].BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
             }
         }
 
-        public void zmenaobrazku()
+        public void ChangeImages()
         {
-            string[, ] poznamky = new string[3, 6];
-            string[] rozdelene;
-            for (int i = 0; i < 3; i++)
-            {
-                rozdelene = obrazkyhodnoty[i].Split(';');
-                for (int j = 0; j < 6; j++)
-                    poznamky[i, j] = rozdelene[j];
-            }
+            bool type = false;
+            string[,] Data = load.getAllDatas(type);
             PictureBox[] pictureboxy = new PictureBox[3];
             pictureboxy[0] = obrazek0;
             pictureboxy[1] = obrazek1;
             pictureboxy[2] = obrazek2;
             for (int i = 0; i < 3; i++)
             {
-                pictureboxy[i].Visible = bool.Parse(poznamky[i, 0]);
-                pictureboxy[i].Location = new Point(int.Parse(poznamky[i, 1]), int.Parse(poznamky[i, 2]));
-                pictureboxy[i].Width = int.Parse(poznamky[i, 3]);
-                pictureboxy[i].Height = int.Parse(poznamky[i, 4]);
-                string[] color = poznamky[i, 5].Split(',');
+                pictureboxy[i].Visible = bool.Parse(Data[i, 0]);
+                pictureboxy[i].Location = new Point(int.Parse(Data[i, 1]), int.Parse(Data[i, 2]));
+                pictureboxy[i].Width = int.Parse(Data[i, 3]);
+                pictureboxy[i].Height = int.Parse(Data[i, 4]);
+                string[] color = Data[i, 5].Split(',');
                 pictureboxy[i].BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
             }
         }

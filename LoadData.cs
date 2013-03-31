@@ -59,19 +59,7 @@ namespace Notes
 
         public int[] getCoordinate(bool coor)
         {
-            string[] DataFromFile;
-            if(coor == true)
-                DataFromFile = get3Notes();
-            else
-                DataFromFile = get3Images();
-            string[, ] Data = new string[3, 6];
-            string[] Calculation;
-            for (int i = 0; i < 3; i++)
-            {
-                Calculation = DataFromFile[i].Split(';');
-                for (int j = 0; j < 6; j++)
-                    Data[i, j] = Calculation[j];
-            }
+            string[, ] Data = getAllDatas(coor);
             int Index = 0;
             for (int i = 0; i < 3; i++)
             {
@@ -88,6 +76,24 @@ namespace Notes
                 return NotesCoordinates;
             else
                 return ImagesCoordinates;
+        }
+
+        public string[, ] getAllDatas(bool type)
+        {
+            string[] DataFromFile;
+            if (type == true)
+                DataFromFile = get3Notes();
+            else
+                DataFromFile = get3Images();
+            string[,] Data = new string[3, 6];
+            string[] Calculation;
+            for (int i = 0; i < 3; i++)
+            {
+                Calculation = DataFromFile[i].Split(';');
+                for (int j = 0; j < 6; j++)
+                    Data[i, j] = Calculation[j];
+            }
+            return Data;
         }
     }
 }

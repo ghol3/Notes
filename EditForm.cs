@@ -11,41 +11,15 @@ namespace Notes
 {
     public partial class EditForm : Form
     {
-        private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
-        private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
-        private int[] pole = new int[6];
-        private int[] pole1 = new int[6];
+        LoadData load = new LoadData();
+        private string[, ];
 
-        public EditForm(int[] souradnice, int[] souradniceobrazku)
+
+        public EditForm()
         {
             InitializeComponent();
-            for (int i = 0; i < 6; i++)
-            {
-                pole[i] = souradnice[i];
-                pole1[i] = souradniceobrazku[i];
-            }
-            string[] udaje = new string[3];
-            int o = 0;
-            string s = "";
-            using (StreamReader sr = new StreamReader(APPpoznamky))
-            {
-                while ((s = sr.ReadLine()) != null)
-                {
-                    udaje[o] = s;
-                    o++;
-                }
-            }
-            string[] udaje1 = new string[3];
-            int o1 = 0;
-            string s1 = "";
-            using (StreamReader sr = new StreamReader(APPobrazky))
-            {
-                while ((s1 = sr.ReadLine()) != null)
-                {
-                    udaje1[o1] = s1;
-                    o1++;
-                }
-            }
+            bool type = true;
+            load.getAllDatas(true);
             //prvni poznamka
             string[] data = udaje[0].Split(';');
             sirka1.Text = data[3];
