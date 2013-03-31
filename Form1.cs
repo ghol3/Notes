@@ -72,6 +72,8 @@ namespace Notes
         {
             EditForm edit = new EditForm();
             edit.ShowDialog();
+            ChangeNotes();
+            ChangeImages();
         }
 
         //POHYB S POZNAMKOU 0 ---------------------------------------------
@@ -227,8 +229,7 @@ namespace Notes
 
         public void ChangeImages()
         {
-            bool type = false;
-            string[,] Data = load.getAllDatas(type);
+            string[,] Data = load.getAllDatas(false);
             PictureBox[] pictureboxy = new PictureBox[3];
             pictureboxy[0] = obrazek0;
             pictureboxy[1] = obrazek1;

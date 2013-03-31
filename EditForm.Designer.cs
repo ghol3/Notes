@@ -443,7 +443,7 @@
             this.SaveOb.TabIndex = 16;
             this.SaveOb.Text = "Ulozit";
             this.SaveOb.UseVisualStyleBackColor = true;
-            this.SaveOb.Click += new System.EventHandler(this.SaveOb_Click);
+            this.SaveOb.Click += new System.EventHandler(this.Save_Click);
             // 
             // groupBox4
             // 

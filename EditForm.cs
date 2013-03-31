@@ -12,70 +12,80 @@ namespace Notes
     public partial class EditForm : Form
     {
         LoadData load = new LoadData();
-        private string[, ];
+        SaveToFolder savetofolder = new SaveToFolder();
+        private string[,]
+            NotesData,
+            ImagesData;
 
 
         public EditForm()
         {
             InitializeComponent();
-            bool type = true;
-            load.getAllDatas(true);
-            //prvni poznamka
-            string[] data = udaje[0].Split(';');
-            sirka1.Text = data[3];
-            vyska1.Text = data[4];
-            barva1.Text = data[5];
-            if (bool.Parse(data[0]) == true)
-                checkBox1.Checked = true;
-            else
-                checkBox1.Checked = false;
-            //druha ponamka
-            string[] data1 = udaje[1].Split(';');
-            sirka2.Text = data1[3];
-            vyska2.Text = data1[4];
-            barva2.Text = data1[5];
-            if (bool.Parse(data1[0]) == true)
-                checkBox2.Checked = true;
-            else
-                checkBox2.Checked = false;
-            //treti poznamka
-            string[] data2 = udaje[2].Split(';');
-            sirka3.Text = data2[3];
-            vyska3.Text = data2[4];
-            barva3.Text = data2[5];
-            if (bool.Parse(data2[0]) == true)
-                checkBox3.Checked = true;
-            else
-                checkBox3.Checked = false;
-            //vsechny obrazky vyplneni pri nacteni((
-            //---------------------------------------
-            string[] dataob0 = udaje1[0].Split(';');
-            obrazeksirka1.Text = dataob0[3];
-            obrazekvyska1.Text = dataob0[4];
-            obrazekbarva1.Text = dataob0[5];
-            if (bool.Parse(dataob0[0]) == true)
-                checkBox1ob.Checked = true;
-            else
-                checkBox1ob.Checked = false;
-            //druha ponamka
-            string[] dataob1 = udaje1[1].Split(';');
-            obrazeksirka2.Text = dataob1[3];
-            obrazekvyska2.Text = dataob1[4];
-            obrazekbarva2.Text = dataob1[5];
-            if (bool.Parse(dataob1[0]) == true)
-                checkBox2ob.Checked = true;
-            else
-                checkBox2ob.Checked = false;
-            //treti poznamka
-            string[] dataob2 = udaje1[2].Split(';');
-            obrazeksirka3.Text = dataob2[3];
-            obrazekvyska3.Text = dataob2[4];
-            obrazekbarva3.Text = dataob2[5];
-            if (bool.Parse(dataob2[0]) == true)
-                checkBox3ob.Checked = true;
-            else
-                checkBox3ob.Checked = false;
-            
+            completion();
+        }
+
+        private void completion()
+        {
+            NotesData = load.getAllDatas(true);
+            ImagesData = load.getAllDatas(false);
+            TextBox[,] textboxs = TextBoxs();
+            CheckBox[] checkboxs = CheckBoxs();
+            for (int i = 0; i < 3; i++)
+            {
+                textboxs[i, 0].Text = NotesData[i, 3];
+                textboxs[i, 1].Text = NotesData[i, 4];
+                textboxs[i, 2].Text = NotesData[i, 5];
+                if (bool.Parse(NotesData[i, 0]))
+                    checkboxs[i].Checked = true;
+                else
+                    checkboxs[i].Checked = false;
+                //obrazky
+                textboxs[i + 3, 0].Text = ImagesData[i, 3];
+                textboxs[i + 3, 1].Text = ImagesData[i, 4];
+                textboxs[i + 3, 2].Text = ImagesData[i, 5];
+                if (bool.Parse(ImagesData[i, 0]))
+                    checkboxs[i + 3].Checked = true;
+                else
+                    checkboxs[i + 3].Checked = false;
+            }
+        }
+
+        private CheckBox[] CheckBoxs()
+        {
+            CheckBox[] CheckBoxs = new CheckBox[6];
+            CheckBoxs[0] = checkBox1;
+            CheckBoxs[1] = checkBox2;
+            CheckBoxs[2] = checkBox3;
+            CheckBoxs[3] = checkBox1ob;
+            CheckBoxs[4] = checkBox2ob;
+            CheckBoxs[5] = checkBox3ob;
+            return CheckBoxs;
+        }
+
+        private TextBox[,] TextBoxs()
+        {
+            TextBox[,] TextBoxs = new TextBox[6, 3];
+            //notes
+            TextBoxs[0, 0] = sirka1;
+            TextBoxs[0, 1] = vyska1;
+            TextBoxs[0, 2] = barva1;
+            TextBoxs[1, 0] = sirka2;
+            TextBoxs[1, 1] = vyska2;
+            TextBoxs[1, 2] = barva2;
+            TextBoxs[2, 0] = sirka3;
+            TextBoxs[2, 1] = vyska3;
+            TextBoxs[2, 2] = barva3;
+            //images
+            TextBoxs[3, 0] = obrazeksirka1;
+            TextBoxs[3, 1] = obrazekvyska1;
+            TextBoxs[3, 2] = obrazekbarva1;
+            TextBoxs[4, 0] = obrazeksirka2;
+            TextBoxs[4, 1] = obrazekvyska2;
+            TextBoxs[4, 2] = obrazekbarva2;
+            TextBoxs[5, 0] = obrazeksirka3;
+            TextBoxs[5, 1] = obrazekvyska3;
+            TextBoxs[5, 2] = obrazekbarva3;
+            return TextBoxs;
         }
         //PRVNI STRANKA ---------------------------------------------
         private void colorButton1_Click(object sender, EventArgs e)
@@ -125,37 +135,8 @@ namespace Notes
         //SAVE----------------------------------------------------------
         private void Save_Click(object sender, EventArgs e)
         {
-            save();
+            savetofolder.SaveSettings();
+            this.Close();
         }
-
-        private void SaveOb_Click(object sender, EventArgs e)
-        {
-            save();
-        }
-
-        /*METODA NA ULOZENI VLASTNOSTI OBJEKTU -------------------------------
-         * True;    30;          30;      45;   45;  45,  45, 54
-         * bool;souradniceX;souradniceY;sirka;vyska;red,green,blue
-         * 
-         */
-        public void save()
-        {
-            using (StreamWriter sw = new StreamWriter(APPpoznamky))
-            {
-                sw.WriteLine(checkBox1.Checked.ToString() + ";" + pole[0].ToString() + ";" + pole[1].ToString() + ";" + sirka1.Text + ";" + vyska1.Text + ";" + barva1.Text);
-                sw.WriteLine(checkBox2.Checked.ToString() + ";" + pole[2].ToString() + ";" + pole[3].ToString() + ";" + sirka2.Text + ";" + vyska2.Text + ";" + barva2.Text);
-                sw.WriteLine(checkBox3.Checked.ToString() + ";" + pole[4].ToString() + ";" + pole[5].ToString() + ";" + sirka3.Text + ";" + vyska3.Text + ";" + barva3.Text);
-                sw.Flush();
-            }
-            //obrazky
-            using (StreamWriter sw = new StreamWriter(APPobrazky))
-            {
-                sw.WriteLine(checkBox1ob.Checked.ToString() + ";" + pole1[0].ToString() + ";" + pole1[1].ToString() + ";" + obrazeksirka1.Text + ";" + obrazekvyska1.Text + ";" + obrazekbarva1.Text);
-                sw.WriteLine(checkBox2ob.Checked.ToString() + ";" + pole1[2].ToString() + ";" + pole1[3].ToString() + ";" + obrazeksirka2.Text + ";" + obrazekvyska2.Text + ";" + obrazekbarva2.Text);
-                sw.WriteLine(checkBox3ob.Checked.ToString() + ";" + pole1[4].ToString() + ";" + pole1[5].ToString() + ";" + obrazeksirka3.Text + ";" + obrazekvyska3.Text + ";" + obrazekbarva3.Text);
-                sw.Flush();
-            }
-        }
-        //---------------------------------------------------------------
     }
 }

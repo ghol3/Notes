@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Notes
 {
@@ -17,6 +18,15 @@ namespace Notes
                 }
                 sw.Flush();
             }
+        }
+        /*METODA NA ULOZENI VLASTNOSTI OBJEKTU -------------------
+         * True;    30;          30;      45;   45;  45,  45, 54
+         * bool;souradniceX;souradniceY;sirka;vyska;red,green,blue
+         * 
+         */
+        public void SaveSettings()
+        {
+            
         }
     }
 }
