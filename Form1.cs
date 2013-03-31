@@ -11,51 +11,28 @@ namespace Notes
 {
     public partial class Form1 : Form
     {
-        private string APPpoznamky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt");
-        private string APPobrazky = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
-        private string[] poznamkyhodnoty = new string[3];
-        private int[] souradnicePoznamek = new int[6];
-        private int[] souradniceObrazku = new int[6];
+        SaveToFolder savetofolder = new SaveToFolder();
+        SaveData save = new SaveData();
+        LoadData load = new LoadData();
+        private int[] NotesCoordinate = new int[6];
+        private int[] ImagesCoordinate = new int[6];
         private int a = 50;
         private int b = 50;
 
         public Form1()
         {
             InitializeComponent();
-            poznamka0.Visible = false;
-            poznamka1.Visible = false;
-            poznamka2.Visible = false;
-
-            try
-            {
-                using (StreamReader sr = new StreamReader(APPpoznamky))
-                {
-                    string s = "";
-                    int j = 0;
-                    while ((s = sr.ReadLine()) != null)
-                    {
-                        poznamkyhodnoty[j] = s;
-                        j++;
-                    }
-                }
-            }
-            catch
-            {
-                using (StreamWriter sw = new StreamWriter(APPpoznamky))
-                {
-                    sw.Write("");
-                    sw.Flush();
-                }
-            }
-            string[, ] p = new string[3, 6];
-            string[] r;
-            for (int i = 0; i < 3; i++)
-            {
-                r = poznamkyhodnoty[i].Split(';');
-                for (int j = 0; j < 6; j++)
-                    p[i, j] = r[j];
-            }
-            souradnicePoznamek[0] = int.Parse(p[0, 1]); 
+            try { string[] Notes3 = load.get3Notes(); }
+            catch { savetofolder.DefaulthSave(load.getAppNotes()); }
+            try { string[] Images3 = load.get3Images(); }
+            catch { savetofolder.DefaulthSave(load.getAppImages()); }
+            //naplneni souradnic pri startu
+            bool coor = true;
+            NotesCoordinate = load.getCoordinate(coor);
+            coor = false;
+            ImagesCoordinate = load.getCoordinate(coor);
+            zmena();
+            zmenaobrazku();
         }
 
         //HRANY VYKRESLENI ---------------------------------------------
@@ -98,80 +75,154 @@ namespace Notes
         //EDIT kliknuti -------------------------------------------------
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            EditForm edit = new EditForm(souradnicePoznamek);
+            EditForm edit = new EditForm();
             edit.ShowDialog();
         }
 
         //POHYB S POZNAMKOU 0 ---------------------------------------------
-        bool pohyb = false;
+        bool Nmove = false;
         private void poznamka0_MouseDown(object sender, MouseEventArgs e)
         {
-            pohyb = true;
+            Nmove = true;
         }
 
         private void poznamka0_MouseMove(object sender, MouseEventArgs e)
         {
             this.Location = new Point(a, b);
-            if (pohyb)
+            if (Nmove)
                 poznamka0.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
         }
         
         private void poznamka0_MouseUp(object sender, MouseEventArgs e)
         {
-            pohyb = false;
-            souradnicePoznamek[0] = poznamka0.Location.X;
-            souradnicePoznamek[1] = poznamka0.Location.Y;
-            MessageBox.Show(souradnicePoznamek[0].ToString());
-            MessageBox.Show(souradnicePoznamek[1].ToString());
+            Nmove = false;
+            int type = 0;
+            save.NCoordinates(type, poznamka0.Location.X, poznamka0.Location.Y);
+            //testovani pak smazat!
+            MessageBox.Show(NotesCoordinate[0].ToString());
+            MessageBox.Show(NotesCoordinate[1].ToString());
             
         }
         //------------------------------------------------------------------
 
         //DRUHA POZNAMKA --------------------------------------------------
-        bool pohyb1 = false;
+        bool Nmove1 = false;
         private void poznamka1_MouseDown(object sender, MouseEventArgs e)
         {
-            pohyb1 = true;
+            Nmove1 = true;
         }
 
         private void poznamka1_MouseMove(object sender, MouseEventArgs e)
         {
             this.Location = new Point(a, b);
-            if (pohyb1)
+            if (Nmove)
                 poznamka1.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
         }
 
         private void poznamka1_MouseUp(object sender, MouseEventArgs e)
         {
-            pohyb1 = false;
-            souradnicePoznamek[2] = poznamka1.Location.X;
-            souradnicePoznamek[3] = poznamka1.Location.Y;
-            MessageBox.Show(souradnicePoznamek[2].ToString());
-            MessageBox.Show(souradnicePoznamek[3].ToString());
+            Nmove1 = false;
+            int type = 2;
+            save.NCoordinates(type, poznamka1.Location.X, poznamka1.Location.Y);
+            //Testovani pak smazat!
+            MessageBox.Show(NotesCoordinate[2].ToString());
+            MessageBox.Show(NotesCoordinate[3].ToString());
         }
         //-------------------------------------------------------------------
 
         //TRETI POZNAMKA
-        bool pohyb2 = false;
+        bool Nmove2 = false;
         private void poznamka2_MouseDown(object sender, MouseEventArgs e)
         {
-            pohyb2 = true;
+            Nmove2 = true;
         }
 
         private void poznamka2_MouseMove(object sender, MouseEventArgs e)
         {
             this.Location = new Point(a, b);
-            if (pohyb2)
+            if (Nmove2)
                 poznamka2.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
         }
 
         private void poznamka2_MouseUp(object sender, MouseEventArgs e)
         {
-            pohyb2 = false;
-            souradnicePoznamek[4] = poznamka2.Location.X;
-            souradnicePoznamek[5] = poznamka2.Location.Y;
-            MessageBox.Show(souradnicePoznamek[4].ToString());
-            MessageBox.Show(souradnicePoznamek[5].ToString());
+            Nmove2 = false;
+            int type = 4;
+            save.NCoordinates(type, poznamka2.Location.X, poznamka2.Location.Y);
+            //testovani pak smazat
+            MessageBox.Show(NotesCoordinate[4].ToString());
+            MessageBox.Show(NotesCoordinate[5].ToString());
+        }
+        //------------------------------------------------------------------
+
+        //OBRAZEK1-OBRAZEK3 POHYBOVANI-----------------------------------
+        bool Imove = false;
+        private void obrazek0_MouseDown(object sender, MouseEventArgs e)
+        {
+            Imove = true;
+        }
+
+        private void obrazek0_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Location = new Point(a, b);
+            if (Imove)
+                obrazek0.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
+        }
+
+        private void obrazek0_MouseUp(object sender, MouseEventArgs e)
+        {
+            Imove = false;
+            int type = 0;
+            save.ICoordinates(type, obrazek0.Location.X, obrazek0.Location.Y);
+            //testovani pak smazat!
+            MessageBox.Show(ImagesCoordinate[0].ToString());
+            MessageBox.Show(ImagesCoordinate[1].ToString());
+        }
+
+        bool Imove1 = false;
+        private void obrazek1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Imove1 = true;
+        }
+
+        private void obrazek1_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Location = new Point(a, b);
+            if (Imove1)
+                obrazek1.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
+        }
+
+        private void obrazek1_MouseUp(object sender, MouseEventArgs e)
+        {
+            Imove1 = false;
+            int type = 2;
+            save.ICoordinates(type, obrazek1.Location.X, obrazek1.Location.Y);
+            //testovani pak smazat
+            MessageBox.Show(ImagesCoordinate[2].ToString());
+            MessageBox.Show(ImagesCoordinate[3].ToString());
+        }
+
+        bool Imove2 = false;
+        private void obrazek2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Imove2 = true;
+        }
+
+        private void obrazek2_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Location = new Point(a, b);
+            if (Imove2)
+                obrazek2.Location = new Point(MousePosition.X - a, MousePosition.Y - b);
+        }
+
+        private void obrazek2_MouseUp(object sender, MouseEventArgs e)
+        {
+            Imove2 = false;
+            int type = 4;
+            save.ICoordinates(type, obrazek2.Location.X, obrazek2.Location.Y);
+            //testovani pak smazat
+            MessageBox.Show(ImagesCoordinate[4].ToString());
+            MessageBox.Show(ImagesCoordinate[5].ToString());
         }
         //------------------------------------------------------------------
 
@@ -202,6 +253,31 @@ namespace Notes
                 textboxy[i].Height = int.Parse(poznamky[i, 4]);
                 string[] color = poznamky[i, 5].Split(',');
                 textboxy[i].BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
+            }
+        }
+
+        public void zmenaobrazku()
+        {
+            string[, ] poznamky = new string[3, 6];
+            string[] rozdelene;
+            for (int i = 0; i < 3; i++)
+            {
+                rozdelene = obrazkyhodnoty[i].Split(';');
+                for (int j = 0; j < 6; j++)
+                    poznamky[i, j] = rozdelene[j];
+            }
+            PictureBox[] pictureboxy = new PictureBox[3];
+            pictureboxy[0] = obrazek0;
+            pictureboxy[1] = obrazek1;
+            pictureboxy[2] = obrazek2;
+            for (int i = 0; i < 3; i++)
+            {
+                pictureboxy[i].Visible = bool.Parse(poznamky[i, 0]);
+                pictureboxy[i].Location = new Point(int.Parse(poznamky[i, 1]), int.Parse(poznamky[i, 2]));
+                pictureboxy[i].Width = int.Parse(poznamky[i, 3]);
+                pictureboxy[i].Height = int.Parse(poznamky[i, 4]);
+                string[] color = poznamky[i, 5].Split(',');
+                pictureboxy[i].BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
             }
         }
 

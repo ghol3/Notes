@@ -34,9 +34,15 @@
             this.poznamka0 = new System.Windows.Forms.TextBox();
             this.poznamka1 = new System.Windows.Forms.TextBox();
             this.poznamka2 = new System.Windows.Forms.TextBox();
+            this.obrazek0 = new System.Windows.Forms.PictureBox();
+            this.obrazek1 = new System.Windows.Forms.PictureBox();
+            this.obrazek2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obrazek0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obrazek1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obrazek2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -103,12 +109,51 @@
             this.poznamka2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseMove);
             this.poznamka2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseUp);
             // 
+            // obrazek0
+            // 
+            this.obrazek0.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.obrazek0.Location = new System.Drawing.Point(12, 80);
+            this.obrazek0.Name = "obrazek0";
+            this.obrazek0.Size = new System.Drawing.Size(44, 40);
+            this.obrazek0.TabIndex = 8;
+            this.obrazek0.TabStop = false;
+            this.obrazek0.MouseDown += new System.Windows.Forms.MouseEventHandler(this.obrazek0_MouseDown);
+            this.obrazek0.MouseMove += new System.Windows.Forms.MouseEventHandler(this.obrazek0_MouseMove);
+            this.obrazek0.MouseUp += new System.Windows.Forms.MouseEventHandler(this.obrazek0_MouseUp);
+            // 
+            // obrazek1
+            // 
+            this.obrazek1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.obrazek1.Location = new System.Drawing.Point(62, 80);
+            this.obrazek1.Name = "obrazek1";
+            this.obrazek1.Size = new System.Drawing.Size(44, 40);
+            this.obrazek1.TabIndex = 9;
+            this.obrazek1.TabStop = false;
+            this.obrazek1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.obrazek1_MouseDown);
+            this.obrazek1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.obrazek1_MouseMove);
+            this.obrazek1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.obrazek1_MouseUp);
+            // 
+            // obrazek2
+            // 
+            this.obrazek2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.obrazek2.Location = new System.Drawing.Point(112, 80);
+            this.obrazek2.Name = "obrazek2";
+            this.obrazek2.Size = new System.Drawing.Size(44, 40);
+            this.obrazek2.TabIndex = 10;
+            this.obrazek2.TabStop = false;
+            this.obrazek2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.obrazek2_MouseDown);
+            this.obrazek2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.obrazek2_MouseMove);
+            this.obrazek2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.obrazek2_MouseUp);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(441, 279);
+            this.Controls.Add(this.obrazek2);
+            this.Controls.Add(this.obrazek1);
+            this.Controls.Add(this.obrazek0);
             this.Controls.Add(this.poznamka2);
             this.Controls.Add(this.poznamka1);
             this.Controls.Add(this.poznamka0);
@@ -124,6 +169,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obrazek0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obrazek1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obrazek2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,6 +185,9 @@
         private System.Windows.Forms.TextBox poznamka0;
         private System.Windows.Forms.TextBox poznamka1;
         private System.Windows.Forms.TextBox poznamka2;
+        private System.Windows.Forms.PictureBox obrazek0;
+        private System.Windows.Forms.PictureBox obrazek1;
+        private System.Windows.Forms.PictureBox obrazek2;
     }
 }
 
