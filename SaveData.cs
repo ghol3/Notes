@@ -21,5 +21,13 @@ namespace Notes
             ImagesCoordinates[type] = x;
             ImagesCoordinates[type + 1] = y;
         }
+
+        public int[] getCoordinates(bool type)
+        {
+            if (type == true)
+                return NotesCoordinates;
+            else
+                return ImagesCoordinates;
+        }
     }
 }

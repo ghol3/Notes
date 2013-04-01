@@ -7,9 +7,10 @@ namespace Notes
 {
     class LoadData
     {
-        private string 
+        private string
             AppNotes = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "poznamky.txt"),
-            AppImages = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt");
+            AppImages = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "obrazky.txt"),
+            AppForm = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "form.txt");
         private string[]
             Notes3FromAppNotes = new string[3],
             Images3FromAppImages = new string[3];
@@ -25,6 +26,11 @@ namespace Notes
         public string getAppImages()
         {
             return AppImages;
+        }
+
+        public string getAppForm()
+        {
+            return AppForm;
         }
 
         public string[] get3Notes()
@@ -92,6 +98,22 @@ namespace Notes
                 Calculation = DataFromFile[i].Split(';');
                 for (int j = 0; j < 6; j++)
                     Data[i, j] = Calculation[j];
+            }
+            return Data;
+        }
+
+        public string[] getFormData()
+        {
+            string[] Data = new string[4];
+            using (StreamReader sr = new StreamReader(getAppForm()))
+            {
+                string s = "";
+                int j = 0;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Data[j] = s;
+                    j++;
+                }
             }
             return Data;
         }

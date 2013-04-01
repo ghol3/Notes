@@ -16,11 +16,19 @@ namespace Notes
         private string[,]
             NotesData,
             ImagesData;
+        int[] 
+            coordsNotes = new int[6],
+            coordsImages = new int[6];
 
 
-        public EditForm()
+        public EditForm(int[] coordNotes, int[] coordImages)
         {
             InitializeComponent();
+            for(int i = 0; i < 6;i++)
+            {
+                coordsNotes[i] = coordNotes[i];
+                coordsImages[i] = coordImages[i];
+            }
             completion();
         }
 
@@ -50,7 +58,7 @@ namespace Notes
             }
         }
 
-        private CheckBox[] CheckBoxs()
+        public CheckBox[] CheckBoxs()
         {
             CheckBox[] CheckBoxs = new CheckBox[6];
             CheckBoxs[0] = checkBox1;
@@ -62,7 +70,7 @@ namespace Notes
             return CheckBoxs;
         }
 
-        private TextBox[,] TextBoxs()
+        public TextBox[,] TextBoxs()
         {
             TextBox[,] TextBoxs = new TextBox[6, 3];
             //notes
@@ -135,7 +143,13 @@ namespace Notes
         //SAVE----------------------------------------------------------
         private void Save_Click(object sender, EventArgs e)
         {
-            savetofolder.SaveSettings();
+            savetofolder.SaveSettings(this, coordsNotes, coordsImages);
+            this.Close();
+        }
+
+        private void SaveOb_Click(object sender, EventArgs e)
+        {
+            savetofolder.SaveSettings(this, coordsNotes, coordsImages);
             this.Close();
         }
     }
