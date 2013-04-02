@@ -109,6 +109,20 @@ namespace Notes.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap notes_refresh {
+            get {
+                object obj = ResourceManager.GetObject("notes-refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap notes_refresh_active {
+            get {
+                object obj = ResourceManager.GetObject("notes-refresh-active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap notes_x {
             get {
                 object obj = ResourceManager.GetObject("notes-x", resourceCulture);

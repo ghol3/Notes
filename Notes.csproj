@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Notes-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -125,6 +128,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\notes-x-active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notes-refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notes-refresh-active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Notes-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

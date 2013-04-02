@@ -394,6 +394,28 @@ namespace Notes
             pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
         }
 
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            savetofolder.DefaulthSave(load.getAppImages());
+            savetofolder.DefaulthSave(load.getAppNotes());
+            savetofolder.DefaulthSaveForm();
+            ChangeNotes();
+            ChangeImages();
+            string[] DataForForm = load.getFormData();
+            string[] color = DataForForm[0].Split(',');
+            this.BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
+        }
+
+        private void refreshButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            refreshButton.BackgroundImage = global::Notes.Properties.Resources.notes_refresh_active;
+        }
+
+        private void refreshButton_MouseLeave(object sender, EventArgs e)
+        {
+            refreshButton.BackgroundImage = global::Notes.Properties.Resources.notes_refresh;
+        }
+
         
     }
 }

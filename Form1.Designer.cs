@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.poznamka0 = new System.Windows.Forms.TextBox();
             this.poznamka1 = new System.Windows.Forms.TextBox();
             this.poznamka2 = new System.Windows.Forms.TextBox();
+            this.refreshButton = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.editBackground = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.obrazek2 = new System.Windows.Forms.PictureBox();
@@ -38,7 +41,8 @@
             this.obrazek0 = new System.Windows.Forms.PictureBox();
             this.Lista = new System.Windows.Forms.PictureBox();
             this.Neviditelne = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek2)).BeginInit();
@@ -46,7 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.obrazek0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // poznamka0
@@ -81,6 +84,31 @@
             this.poznamka2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseDown);
             this.poznamka2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseMove);
             this.poznamka2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.poznamka2_MouseUp);
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.BackColor = System.Drawing.SystemColors.Control;
+            this.refreshButton.BackgroundImage = global::Notes.Properties.Resources.notes_refresh;
+            this.refreshButton.Location = new System.Drawing.Point(414, 84);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(27, 22);
+            this.refreshButton.TabIndex = 14;
+            this.refreshButton.TabStop = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            this.refreshButton.MouseLeave += new System.EventHandler(this.refreshButton_MouseLeave);
+            this.refreshButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.refreshButton_MouseMove);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
+            this.pictureBox1.Location = new System.Drawing.Point(414, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 22);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
             // 
             // editBackground
             // 
@@ -164,24 +192,13 @@
             this.Neviditelne.TabIndex = 0;
             this.Neviditelne.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
-            this.pictureBox1.Location = new System.Drawing.Point(414, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 22);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(441, 279);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.editBackground);
             this.Controls.Add(this.pictureBox2);
@@ -194,11 +211,14 @@
             this.Controls.Add(this.Lista);
             this.Controls.Add(this.Neviditelne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.Move += new System.EventHandler(this.Form1_Move);
+            ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek2)).EndInit();
@@ -206,7 +226,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.obrazek0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,6 +244,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox editBackground;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox refreshButton;
     }
 }
 
