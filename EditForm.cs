@@ -143,14 +143,90 @@ namespace Notes
         //SAVE----------------------------------------------------------
         private void Save_Click(object sender, EventArgs e)
         {
-            savetofolder.SaveSettings(this, coordsNotes, coordsImages);
-            this.Close();
+            bool Save = testingMinMax();
+            bool SaveImages = testingMinMaxImages();
+            if (Save && SaveImages)
+            {
+                savetofolder.SaveSettings(this, coordsNotes, coordsImages);
+                this.Close();
+            }
         }
 
         private void SaveOb_Click(object sender, EventArgs e)
         {
-            savetofolder.SaveSettings(this, coordsNotes, coordsImages);
-            this.Close();
+            bool Save = testingMinMax();
+            bool SaveImages = testingMinMaxImages();
+            if (Save && SaveImages)
+            {
+                savetofolder.SaveSettings(this, coordsNotes, coordsImages);
+                this.Close();
+            }
+        }
+
+        private bool testingMinMax()
+        {
+            bool testing = true;
+            TextBox[] textboxy = new TextBox[6];
+            textboxy[0] = sirka1;
+            textboxy[1] = sirka2;
+            textboxy[2] = sirka3;
+            textboxy[3] = vyska1;
+            textboxy[4] = vyska2;
+            textboxy[5] = vyska3;
+            for (int i = 0; i < 3; i++)
+            {
+                if (int.Parse(textboxy[i].Text) > 400)
+                {
+                    MessageBox.Show("Invalid " + (i + 1) + ". widht in Notes settings!");
+                    testing = false;
+                }
+                if (int.Parse(textboxy[i + 3].Text) > 200)
+                {
+                    MessageBox.Show("Invalid " + (i + 1) + ". height in Notes settings!");
+                    testing = false;
+                }
+            }
+            return testing;
+        }
+
+        private void sirka1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!Char.IsDigit(c) && c != 0 && c != 13 && c != 8)
+                e.Handled = true;
+        }
+
+        private void obrazeksirka1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!Char.IsDigit(c) && c != 0 && c != 13 && c != 8)
+                e.Handled = true;
+        }
+
+        private bool testingMinMaxImages()
+        {
+            bool testing = true;
+            TextBox[] Images = new TextBox[6];
+            Images[0] = obrazeksirka1;
+            Images[1] = obrazeksirka2;
+            Images[2] = obrazeksirka3;
+            Images[3] = obrazekvyska1;
+            Images[4] = obrazekvyska2;
+            Images[5] = obrazekvyska3;
+            for (int i = 0; i < 3; i++)
+            {
+                if (int.Parse(Images[i].Text) > 400)
+                {
+                    MessageBox.Show("Invalid " + (i + 1) + ". widht in Images settings!");
+                    testing = false;
+                }
+                if (int.Parse(Images[i + 3].Text) > 200)
+                {
+                    MessageBox.Show("Invalid " + (i + 1) + ". height in Images settings!");
+                    testing = false;
+                }
+            }
+            return testing;
         }
     }
 }

@@ -36,17 +36,17 @@
             this.obrazek2 = new System.Windows.Forms.PictureBox();
             this.obrazek1 = new System.Windows.Forms.PictureBox();
             this.obrazek0 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Lista = new System.Windows.Forms.PictureBox();
             this.Neviditelne = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.editBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // poznamka0
@@ -92,6 +92,8 @@
             this.editBackground.TabIndex = 12;
             this.editBackground.TabStop = false;
             this.editBackground.Click += new System.EventHandler(this.editBackground_Click);
+            this.editBackground.MouseLeave += new System.EventHandler(this.editBackground_MouseLeave);
+            this.editBackground.MouseMove += new System.Windows.Forms.MouseEventHandler(this.editBackground_MouseMove);
             // 
             // pictureBox2
             // 
@@ -141,19 +143,6 @@
             this.obrazek0.MouseMove += new System.Windows.Forms.MouseEventHandler(this.obrazek0_MouseMove);
             this.obrazek0.MouseUp += new System.Windows.Forms.MouseEventHandler(this.obrazek0_MouseUp);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
-            this.pictureBox1.Location = new System.Drawing.Point(414, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 22);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            // 
             // Lista
             // 
             this.Lista.BackgroundImage = global::Notes.Properties.Resources.notes_lista;
@@ -175,12 +164,25 @@
             this.Neviditelne.TabIndex = 0;
             this.Neviditelne.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
+            this.pictureBox1.Location = new System.Drawing.Point(414, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 22);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(441, 279);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.editBackground);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.obrazek2);
@@ -189,7 +191,6 @@
             this.Controls.Add(this.poznamka2);
             this.Controls.Add(this.poznamka1);
             this.Controls.Add(this.poznamka0);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Lista);
             this.Controls.Add(this.Neviditelne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -203,9 +204,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.obrazek2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazek0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Neviditelne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,7 +216,6 @@
 
         private System.Windows.Forms.PictureBox Neviditelne;
         private System.Windows.Forms.PictureBox Lista;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox poznamka0;
         private System.Windows.Forms.TextBox poznamka1;
         private System.Windows.Forms.TextBox poznamka2;
@@ -224,6 +224,7 @@
         private System.Windows.Forms.PictureBox obrazek2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox editBackground;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

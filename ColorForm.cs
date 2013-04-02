@@ -20,6 +20,7 @@ namespace Notes
             green.Value = int.Parse(color[1]);
             blue.Value = int.Parse(color[2]);
             Barva.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
+            labely();
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -31,6 +32,14 @@ namespace Notes
         private void red_Scroll(object sender, EventArgs e)
         {
             Barva.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
+            labely();
+        }
+
+        private void labely()
+        {
+            redlabel.Text = red.Value.ToString();
+            greenlabel.Text = green.Value.ToString();
+            bluelabel.Text = blue.Value.ToString();
         }
     }
 }

@@ -107,19 +107,24 @@
             // sirka1
             // 
             this.sirka1.Location = new System.Drawing.Point(63, 29);
+            this.sirka1.MaxLength = 3;
             this.sirka1.Name = "sirka1";
             this.sirka1.Size = new System.Drawing.Size(85, 20);
             this.sirka1.TabIndex = 1;
+            this.sirka1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sirka1_KeyPress);
             // 
             // vyska1
             // 
             this.vyska1.Location = new System.Drawing.Point(63, 55);
+            this.vyska1.MaxLength = 3;
             this.vyska1.Name = "vyska1";
             this.vyska1.Size = new System.Drawing.Size(85, 20);
             this.vyska1.TabIndex = 2;
+            this.vyska1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sirka1_KeyPress);
             // 
             // barva1
             // 
+            this.barva1.Enabled = false;
             this.barva1.Location = new System.Drawing.Point(63, 81);
             this.barva1.Name = "barva1";
             this.barva1.Size = new System.Drawing.Size(85, 20);
@@ -272,9 +277,11 @@
             // sirka3
             // 
             this.sirka3.Location = new System.Drawing.Point(63, 29);
+            this.sirka3.MaxLength = 3;
             this.sirka3.Name = "sirka3";
             this.sirka3.Size = new System.Drawing.Size(85, 20);
             this.sirka3.TabIndex = 1;
+            this.sirka3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sirka1_KeyPress);
             // 
             // colorButton3
             // 
@@ -289,12 +296,15 @@
             // vyska3
             // 
             this.vyska3.Location = new System.Drawing.Point(63, 55);
+            this.vyska3.MaxLength = 3;
             this.vyska3.Name = "vyska3";
             this.vyska3.Size = new System.Drawing.Size(85, 20);
             this.vyska3.TabIndex = 2;
+            this.vyska3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sirka1_KeyPress);
             // 
             // barva3
             // 
+            this.barva3.Enabled = false;
             this.barva3.Location = new System.Drawing.Point(63, 81);
             this.barva3.Name = "barva3";
             this.barva3.Size = new System.Drawing.Size(85, 20);
@@ -366,9 +376,11 @@
             // sirka2
             // 
             this.sirka2.Location = new System.Drawing.Point(63, 29);
+            this.sirka2.MaxLength = 3;
             this.sirka2.Name = "sirka2";
             this.sirka2.Size = new System.Drawing.Size(85, 20);
             this.sirka2.TabIndex = 1;
+            this.sirka2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sirka1_KeyPress);
             // 
             // colorButton2
             // 
@@ -383,12 +395,15 @@
             // vyska2
             // 
             this.vyska2.Location = new System.Drawing.Point(63, 55);
+            this.vyska2.MaxLength = 3;
             this.vyska2.Name = "vyska2";
             this.vyska2.Size = new System.Drawing.Size(85, 20);
             this.vyska2.TabIndex = 2;
+            this.vyska2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sirka1_KeyPress);
             // 
             // barva2
             // 
+            this.barva2.Enabled = false;
             this.barva2.Location = new System.Drawing.Point(63, 81);
             this.barva2.Name = "barva2";
             this.barva2.Size = new System.Drawing.Size(85, 20);
@@ -484,9 +499,11 @@
             // obrazeksirka3
             // 
             this.obrazeksirka3.Location = new System.Drawing.Point(63, 29);
+            this.obrazeksirka3.MaxLength = 3;
             this.obrazeksirka3.Name = "obrazeksirka3";
             this.obrazeksirka3.Size = new System.Drawing.Size(85, 20);
             this.obrazeksirka3.TabIndex = 1;
+            this.obrazeksirka3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.obrazeksirka1_KeyPress);
             // 
             // colorbutton3obrazek
             // 
@@ -501,12 +518,15 @@
             // obrazekvyska3
             // 
             this.obrazekvyska3.Location = new System.Drawing.Point(63, 55);
+            this.obrazekvyska3.MaxLength = 3;
             this.obrazekvyska3.Name = "obrazekvyska3";
             this.obrazekvyska3.Size = new System.Drawing.Size(85, 20);
             this.obrazekvyska3.TabIndex = 2;
+            this.obrazekvyska3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.obrazeksirka1_KeyPress);
             // 
             // obrazekbarva3
             // 
+            this.obrazekbarva3.Enabled = false;
             this.obrazekbarva3.Location = new System.Drawing.Point(63, 81);
             this.obrazekbarva3.Name = "obrazekbarva3";
             this.obrazekbarva3.Size = new System.Drawing.Size(85, 20);
@@ -578,9 +598,11 @@
             // obrazeksirka2
             // 
             this.obrazeksirka2.Location = new System.Drawing.Point(63, 29);
+            this.obrazeksirka2.MaxLength = 3;
             this.obrazeksirka2.Name = "obrazeksirka2";
             this.obrazeksirka2.Size = new System.Drawing.Size(85, 20);
             this.obrazeksirka2.TabIndex = 1;
+            this.obrazeksirka2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.obrazeksirka1_KeyPress);
             // 
             // colorbutton2obrazek
             // 
@@ -595,12 +617,15 @@
             // obrazekvyska2
             // 
             this.obrazekvyska2.Location = new System.Drawing.Point(63, 55);
+            this.obrazekvyska2.MaxLength = 3;
             this.obrazekvyska2.Name = "obrazekvyska2";
             this.obrazekvyska2.Size = new System.Drawing.Size(85, 20);
             this.obrazekvyska2.TabIndex = 2;
+            this.obrazekvyska2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.obrazeksirka1_KeyPress);
             // 
             // obrazekbarva2
             // 
+            this.obrazekbarva2.Enabled = false;
             this.obrazekbarva2.Location = new System.Drawing.Point(63, 81);
             this.obrazekbarva2.Name = "obrazekbarva2";
             this.obrazekbarva2.Size = new System.Drawing.Size(85, 20);
@@ -672,9 +697,11 @@
             // obrazeksirka1
             // 
             this.obrazeksirka1.Location = new System.Drawing.Point(63, 29);
+            this.obrazeksirka1.MaxLength = 3;
             this.obrazeksirka1.Name = "obrazeksirka1";
             this.obrazeksirka1.Size = new System.Drawing.Size(85, 20);
             this.obrazeksirka1.TabIndex = 1;
+            this.obrazeksirka1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.obrazeksirka1_KeyPress);
             // 
             // colorbutton1obrazek
             // 
@@ -689,12 +716,15 @@
             // obrazekvyska1
             // 
             this.obrazekvyska1.Location = new System.Drawing.Point(63, 55);
+            this.obrazekvyska1.MaxLength = 3;
             this.obrazekvyska1.Name = "obrazekvyska1";
             this.obrazekvyska1.Size = new System.Drawing.Size(85, 20);
             this.obrazekvyska1.TabIndex = 2;
+            this.obrazekvyska1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.obrazeksirka1_KeyPress);
             // 
             // obrazekbarva1
             // 
+            this.obrazekbarva1.Enabled = false;
             this.obrazekbarva1.Location = new System.Drawing.Point(63, 81);
             this.obrazekbarva1.Name = "obrazekbarva1";
             this.obrazekbarva1.Size = new System.Drawing.Size(85, 20);

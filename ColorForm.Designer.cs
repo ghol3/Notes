@@ -36,6 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.OK = new System.Windows.Forms.Button();
+            this.redlabel = new System.Windows.Forms.Label();
+            this.greenlabel = new System.Windows.Forms.Label();
+            this.bluelabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blue)).BeginInit();
@@ -72,7 +75,7 @@
             // Barva
             // 
             this.Barva.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Barva.Location = new System.Drawing.Point(213, 29);
+            this.Barva.Location = new System.Drawing.Point(213, 57);
             this.Barva.Name = "Barva";
             this.Barva.Size = new System.Drawing.Size(59, 58);
             this.Barva.TabIndex = 3;
@@ -107,7 +110,7 @@
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(213, 141);
+            this.OK.Location = new System.Drawing.Point(213, 153);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(59, 23);
             this.OK.TabIndex = 7;
@@ -115,11 +118,41 @@
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
+            // redlabel
+            // 
+            this.redlabel.AutoSize = true;
+            this.redlabel.Location = new System.Drawing.Point(163, 57);
+            this.redlabel.Name = "redlabel";
+            this.redlabel.Size = new System.Drawing.Size(35, 13);
+            this.redlabel.TabIndex = 8;
+            this.redlabel.Text = "label4";
+            // 
+            // greenlabel
+            // 
+            this.greenlabel.AutoSize = true;
+            this.greenlabel.Location = new System.Drawing.Point(163, 108);
+            this.greenlabel.Name = "greenlabel";
+            this.greenlabel.Size = new System.Drawing.Size(35, 13);
+            this.greenlabel.TabIndex = 9;
+            this.greenlabel.Text = "label5";
+            // 
+            // bluelabel
+            // 
+            this.bluelabel.AutoSize = true;
+            this.bluelabel.Location = new System.Drawing.Point(163, 159);
+            this.bluelabel.Name = "bluelabel";
+            this.bluelabel.Size = new System.Drawing.Size(35, 13);
+            this.bluelabel.TabIndex = 10;
+            this.bluelabel.Text = "label6";
+            // 
             // ColorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 190);
+            this.Controls.Add(this.bluelabel);
+            this.Controls.Add(this.greenlabel);
+            this.Controls.Add(this.redlabel);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -150,5 +183,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button OK;
+        private System.Windows.Forms.Label redlabel;
+        private System.Windows.Forms.Label greenlabel;
+        private System.Windows.Forms.Label bluelabel;
     }
 }

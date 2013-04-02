@@ -84,7 +84,7 @@ namespace Notes
         //---------------------------------------------------------------
 
         //EDIT kliknuti -------------------------------------------------
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             int[] coordNotes = save.getCoordinates(true);
             int[] coordImages = save.getCoordinates(false);
@@ -289,16 +289,6 @@ namespace Notes
         {
             pictureBox2.BackgroundImage = global::Notes.Properties.Resources.notes_x;
         }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus_active;
-        }
-
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
-        }
         //------------------------------------------------------------------
         private void testingImage(int coordX, int coordY, int Index)
         {
@@ -369,13 +359,41 @@ namespace Notes
             int red = this.BackColor.R;
             int green = this.BackColor.G;
             int blue = this.BackColor.B;
-            MessageBox.Show(red.ToString() + ";" + green.ToString() + ";" + blue.ToString());
             ColorForm changeBackColor = new ColorForm(red.ToString() + "," + green.ToString() + "," + blue.ToString());
             changeBackColor.ShowDialog();
-            string[] color = changeBackColor.colorfromform.Split(',');
+            string[] color = new string[3];
+            try { color = changeBackColor.colorfromform.Split(','); }
+            catch 
+            { 
+                color[0] = this.BackColor.R.ToString();
+                color[1] = this.BackColor.G.ToString();
+                color[2] = this.BackColor.B.ToString();
+            }
             this.BackColor = Color.FromArgb(int.Parse(color[0]), int.Parse(color[1]), int.Parse(color[2]));
             string Colors = this.BackColor.R.ToString() + "," + this.BackColor.G.ToString() + "," + this.BackColor.B.ToString();
             savetofolder.savingForm(Colors, poznamka0.Text, poznamka1.Text, poznamka2.Text);
         }
+
+        private void editBackground_MouseMove(object sender, MouseEventArgs e)
+        {
+            editBackground.BackgroundImage = global::Notes.Properties.Resources.notes_edit_active;
+        }
+
+        private void editBackground_MouseLeave(object sender, EventArgs e)
+        {
+            editBackground.BackgroundImage = global::Notes.Properties.Resources.notes_edit;
+        }
+
+        private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus_active;
+        }
+
+        private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
+        {
+            pictureBox1.BackgroundImage = global::Notes.Properties.Resources.notes_plus;
+        }
+
+        
     }
 }
